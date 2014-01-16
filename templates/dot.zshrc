@@ -12,7 +12,7 @@ ZSH_THEME="honnix"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -45,11 +45,13 @@ ZSH_THEME="honnix"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm z screen sbt pip osx mvn scala virtualenv)
+plugins=(git brew rvm z screen sbt pip osx mvn scala virtualenv virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+bindkey -M menuselect '^M' .accept-line
 
 export PATH=/usr/local/rvm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -68,5 +70,11 @@ export PATH=/usr/local/rvm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export LSCOLORS=fxgxbxdxcxegedabagacad
+export JAVA_OPTS=-Dapple.awt.UIElement=true
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+alias lla="ls -la"
+alias la="ls -a"
+alias p2="source ~/.py27"
+alias llh="ls -lh"
