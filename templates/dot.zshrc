@@ -52,6 +52,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 bindkey -M menuselect '^M' .accept-line
+unsetopt share_history
 
 export PATH=/usr/local/rvm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
