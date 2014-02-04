@@ -77,5 +77,7 @@ export JAVA_OPTS=-Dapple.awt.UIElement=true
 
 alias lla="ls -la"
 alias la="ls -a"
-alias p2="source ~/.py27"
 alias llh="ls -lh"
+alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
+
+source $(brew --prefix)/bin/virtualenvwrapper.sh
