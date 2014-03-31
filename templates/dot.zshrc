@@ -42,6 +42,8 @@ CASE_SENSITIVE="true"
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
 
+export PATH=/usr/local/bin:$PATH
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -55,7 +57,6 @@ source $ZSH/oh-my-zsh.sh
 # bindkey -M menuselect '^M' .accept-line
 unsetopt share_history
 
-export PATH=/usr/local/rvm/bin:$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -71,6 +72,8 @@ export PATH=/usr/local/rvm/bin:$HOME/bin:/usr/local/bin:$PATH
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+export PATH=/usr/local/rvm/bin:$HOME/bin:$PATH
+
 export LSCOLORS=fxgxbxdxcxegedabagacad
 export JAVA_OPTS=-Dapple.awt.UIElement=true
 
@@ -79,6 +82,4 @@ export JAVA_OPTS=-Dapple.awt.UIElement=true
 alias lla="ls -la"
 alias la="ls -a"
 alias llh="ls -lh"
-alias ec="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n"
 
-source $(brew --prefix)/bin/virtualenvwrapper.sh
