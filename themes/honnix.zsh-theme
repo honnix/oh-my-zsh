@@ -48,7 +48,11 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %a - action (e.g. rebase-i)
 # %R - repository path
 # %S - path in the repository
-PR_RST="%{${reset_color}%}"
+if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+    PR_RST="%f"
+else
+    PR_RST="%{${reset_color}%}"
+fi
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
 FMT_UNSTAGED="%{$orange%}●"
@@ -59,7 +63,6 @@ zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
 zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
 zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
-
 
 function steeef_preexec {
     case "$(history $HISTCMD)" in
@@ -95,5 +98,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$purple%}%n%{$reset_color%} %{$limegreen%}%c%{$reset_color%} $vcs_info_msg_0_$(virtualenv_info)%{$reset_color%}$ '
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s%{$reset_color%})"
+PROMPT='${ret_status}%{$fg_bold[green]%}%p%{$reset_color%} %{$purple%}%n${PR_RST} %{$limegreen%}%2c${PR_RST} $vcs_info_msg_0_$(virtualenv_info)%{$reset_color%}$ '
