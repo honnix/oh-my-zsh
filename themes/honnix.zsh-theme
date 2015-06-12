@@ -26,12 +26,14 @@ if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     purple="%F{135}"
     hotpink="%F{161}"
     limegreen="%F{118}"
+    PR_RST="%f"
 else
     turquoise="$fg[cyan]"
     orange="$fg[yellow]"
     purple="$fg[magenta]"
     hotpink="$fg[red]"
     limegreen="$fg[green]"
+    PR_RST="%{${reset_color}%}"
 fi
 
 # enable VCS systems you use
@@ -48,11 +50,6 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %a - action (e.g. rebase-i)
 # %R - repository path
 # %S - path in the repository
-if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    PR_RST="%f"
-else
-    PR_RST="%{${reset_color}%}"
-fi
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
 FMT_UNSTAGED="%{$orange%}●"
