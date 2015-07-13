@@ -95,5 +95,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s%{$reset_color%})"
-PROMPT='${ret_status}%{$fg_bold[green]%}%p%{$reset_color%} %{$purple%}%n${PR_RST} %{$limegreen%}%2c${PR_RST} $vcs_info_msg_0_$(virtualenv_info)$ '
+local ret_status="%(?:%{$fg_bold[green]%}➜ %s%{$reset_color%}:%{$fg_bold[red]%}➜ %s%{$reset_color%})"
+PROMPT='${ret_status} %{$purple%}%n${PR_RST} %{$limegreen%}%2c${PR_RST} $vcs_info_msg_0_$(virtualenv_info)$ '
