@@ -10,7 +10,7 @@
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('%{$fg[blue]%}`basename $VIRTUAL_ENV`%{$reset_color%}') '
+    [ $VIRTUAL_ENV ] && echo '('%F{blue}`basename $VIRTUAL_ENV`%f') '
 }
 PR_GIT_UPDATE=1
 
@@ -20,20 +20,18 @@ autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
 #use extended color pallete if available
-if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
+if [[ $terminfo[colors] -ge 256 ]]; then
     turquoise="%F{81}"
     orange="%F{166}"
     purple="%F{135}"
     hotpink="%F{161}"
     limegreen="%F{118}"
-    PR_RST="%f"
 else
-    turquoise="$fg[cyan]"
-    orange="$fg[yellow]"
-    purple="$fg[magenta]"
-    hotpink="$fg[red]"
-    limegreen="$fg[green]"
-    PR_RST="%{${reset_color}%}"
+    turquoise="%F{cyan}"
+    orange="%F{yellow}"
+    purple="%F{magenta}"
+    hotpink="%F{red}"
+    limegreen="%F{green}"
 fi
 
 # enable VCS systems you use
@@ -50,6 +48,7 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %a - action (e.g. rebase-i)
 # %R - repository path
 # %S - path in the repository
+PR_RST="%f"
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
 FMT_UNSTAGED="%{$orange%}●"
@@ -60,6 +59,7 @@ zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
 zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
 zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
+
 
 function steeef_preexec {
     case "$(history $HISTCMD)" in
