@@ -25,12 +25,16 @@ if [[ $terminfo[colors] -ge 256 ]]; then
     orange="%F{166}"
     purple="%F{135}"
     hotpink="%F{161}"
+    red="%F{196}"
+    green="%F{46}"
     limegreen="%F{118}"
 else
     turquoise="%F{cyan}"
     orange="%F{yellow}"
     purple="%F{magenta}"
     hotpink="%F{red}"
+    red="%F{red}"
+    green="%F{green}"
     limegreen="%F{green}"
 fi
 
@@ -95,5 +99,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ %s%{$reset_color%}:%{$fg_bold[red]%}➜ %s%{$reset_color%})"
+local ret_status="%(?:%B%{$green%}➜ %s${PR_RST}%b:%B%{$red%}➜ %s${PR_RST}%b)"
 PROMPT='${ret_status} %{$purple%}%n${PR_RST} %{$limegreen%}%2c${PR_RST} $vcs_info_msg_0_$(virtualenv_info)$ '
