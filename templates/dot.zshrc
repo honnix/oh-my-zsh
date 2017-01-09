@@ -63,8 +63,9 @@ unsetopt share_history
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='vim'
 # fi
+EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -72,14 +73,16 @@ unsetopt share_history
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export PATH=/usr/local/rvm/bin:$HOME/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 export LSCOLORS=fxgxbxdxcxegedabagacad
 export JAVA_OPTS=-Dapple.awt.UIElement=true
-
-[[ -s "/usr/local/rvm/scripts/rvm" ]] && source "/usr/local/rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 alias lla="ls -la"
 alias la="ls -a"
 alias llh="ls -lh"
 
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
