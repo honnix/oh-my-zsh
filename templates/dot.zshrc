@@ -47,7 +47,7 @@ export PATH=/usr/local/bin:$PATH
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew rvm z screen sbt pip osx mvn scala virtualenv virtualenvwrapper)
+plugins=(git brew rvm z tmux sbt pip osx mvn scala virtualenv virtualenvwrapper zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,8 +81,27 @@ export JAVA_OPTS=-Dapple.awt.UIElement=true
 alias lla="ls -la"
 alias la="ls -a"
 alias llh="ls -lh"
+alias vi="/usr/local/bin/vim"
 
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Run this command to configure your shell: 
+# eval $(docker-machine env)
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/honnix/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/honnix/Developer/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/honnix/Developer/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/honnix/Developer/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/honnix/Developer/google-cloud-sdk/completion.zsh.inc'
+fi
+
