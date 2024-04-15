@@ -11,7 +11,7 @@
 
 # Require emacs version to be minimum 24
 autoload -Uz is-at-least
-is-at-least 24 "${${(Az)"$(emacsclient --version 2>/dev/null)"}[2]}" || return 0
+#is-at-least 24 "${${(Az)"$(emacsclient --version 2>/dev/null)"}[2]}" || return 0
 
 # Handle $0 according to the standard:
 # https://zdharma-continuum.github.io/Zsh-100-Commits-Club/Zsh-Plugin-Standard.html
