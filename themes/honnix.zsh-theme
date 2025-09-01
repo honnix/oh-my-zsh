@@ -84,13 +84,14 @@ add-zsh-hook chpwd steeef_chpwd
 
 function steeef_precmd {
     if [[ -n "$PR_GIT_UPDATE" ]] ; then
+        # (2025-09-01 honnix): Disabled because it is too slow for monorepo
         # check for untracked files or updated submodules, since vcs_info doesn't
-        if git ls-files --other --exclude-standard 2> /dev/null | grep -q "."; then
-            PR_GIT_UPDATE=1
-            FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
-        else
+#        if git ls-files --other --exclude-standard 2> /dev/null | grep -q "."; then
+#            PR_GIT_UPDATE=1
+#            FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST})"
+#        else
             FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
-        fi
+#        fi
         zstyle ':vcs_info:*:prompt:*' formats "${FMT_BRANCH} "
 
         vcs_info 'prompt'
